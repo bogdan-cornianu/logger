@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript" src="Logger.js"></script>
+<script>
+Logger.onError(true, true, function (errorMsg, url, lineNumber) {
+	var errorMessage = errorMsg + ' at line: '+ lineNumber + ' in ' + url,
+		raspuns = '';
+	Logger.error(errorMessage, Logger.location.LocalStorage);
+
+	raspuns = confirm("A aparut o eroare. Doriti sa salvati inregistrarile intr-un fisier text?");
+	if (raspuns == true) {
+	  Logger.exportLog();
+	}
+	return true;//suppress errors on console
+});
+</script>
+</head>
+<body>
+<button onclick="throw new Error('eroare.')">Buton</button>
+</body>
+</html>
