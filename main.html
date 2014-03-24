@@ -4,11 +4,11 @@
 <script>
 Logger.onError(true, true, function (errorMsg, url, lineNumber) {
 	var errorMessage = errorMsg + ' at line: '+ lineNumber + ' in ' + url,
-		raspuns = '';
+		answer = '';
 	Logger.error(errorMessage, Logger.location.LocalStorage);
 
-	raspuns = confirm("A aparut o eroare. Doriti sa salvati inregistrarile intr-un fisier text?");
-	if (raspuns == true) {
+	answer = confirm("An error occurred. Would you like to export the log to a file?");
+	if (answer == true) {
 	  Logger.exportLog();
 	}
 	return true;//suppress errors on console
@@ -16,6 +16,6 @@ Logger.onError(true, true, function (errorMsg, url, lineNumber) {
 </script>
 </head>
 <body>
-<button onclick="throw new Error('eroare.')">Buton</button>
+<button onclick="throw new Error('JS Error.')">Buton</button>
 </body>
 </html>
